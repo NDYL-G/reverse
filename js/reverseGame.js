@@ -43,4 +43,98 @@ async function playPhrase(src, canvas) {
   const buffer = await audioContext.decodeAudioData(arrayBuffer);
 
   for (let i = 0; i < buffer.numberOfChannels; i++) {
-    buffer.getChannelData(i).
+    buffer.getChannelData(i).reverse();
+  }
+
+  const source = audioContext.createBufferSource();
+  source.buffer = buffer;
+  source.playbackRate.value = selectedSpeed;
+
+  analyser = audioContext.createAnalyser();
+  analyser.fftSize = 2048;
+  dataArray = new Uint8Array(analyser.frequencyBinCount);
+
+  source.connect(analyser);
+  analyser.connect(audioContext.destination);
+
+  source.start(0);
+  drawWaveform(canvas);
+}
+
+function startRecording(canvas) {
+  navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+    recordedChunks = [];
+    mediaRecorder = new MediaRecorder(stream);
+    mediaRecorder.ondataavailable = e => recordedChunks.push(e.data);
+    mediaRecorder.onstop = () => handleRecording(canvas);
+    mediaRecorder.start();
+
+    const micSource = audioContext.createMediaStreamSource(stream);
+    analyser = audioContext.createAnalyser();
+    analyser.fftSize = 2048;
+    dataArray = new Uint8Array(analyser.frequencyBinCount);
+    micSource.connect(analyser);
+    drawWaveform(canvas);
+  });
+}
+
+function stopRecording() {
+  if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+    mediaRecorder.stop();
+  }
+}
+
+function handleRecording(canvas) {
+  const blob = new Blob(recordedChunks, { type: 'audio/webm' });
+  const reader = new FileReader();
+
+  reader.onloadend = () => {
+    audioContext.decodeAudioData(reader.result, buffer => {
+      for (let i = 0; i < buffer.numberOfChannels; i++) {
+        buffer.getChannelData(i).reverse();
+      }
+
+      const src = audioContext.createBufferSource();
+      src.buffer = buffer;
+      src.connect(audioContext.destination);
+      src.start();
+
+      analyser = audioContext.createAnalyser();
+      analyser.fftSize = 2048;
+      dataArray = new Uint8Array(analyser.frequencyBinCount);
+      src.connect(analyser);
+      drawWaveform(canvas);
+    });
+  };
+  reader.readAsArrayBuffer(blob);
+}
+
+// Safe DOM handling
+window.addEventListener('DOMContentLoaded', () => {
+  const phraseSelect = document.getElementById('phrase-select');
+  const playBtn = document.getElementById('play-phrase');
+  const startBtn = document.getElementById('start-record');
+  const stopBtn = document.getElementById('stop-record');
+  const canvas = document.getElementById('waveform');
+  const phoneticOutput = document.querySelector('.phonetic em');
+
+  playBtn.addEventListener('click', () => {
+    const filename = phraseSelect.value;
+    playPhrase(`snd/${filename}`, canvas);
+
+    if (phonetics[filename]) {
+      phoneticOutput.textContent = phonetics[filename];
+    } else {
+      phoneticOutput.textContent = "(phonetic not available)";
+    }
+  });
+
+  startBtn.addEventListener('click', () => startRecording(canvas));
+  stopBtn.addEventListener('click', stopRecording);
+
+  document.querySelectorAll('input[name="speed"]').forEach(radio => {
+    radio.addEventListener('change', (e) => {
+      selectedSpeed = parseFloat(e.target.value);
+    });
+  });
+});
