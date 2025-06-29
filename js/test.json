@@ -1,0 +1,84 @@
+{
+  "title": "Professional Experience",
+  "content": [
+    {
+      "company": "Accelerate People",
+      "logo": "../img/ap.jpg",
+      "dates": "2023 – Present",
+      "title": "End Point Assessor and Moderator",
+      "text": [
+        "Assessor, moderator, and SME of technical competencies across IT, project management and product development disciplines.",
+        "Provided feedback aligned to safety, best practices, and industry expectations."
+      ]
+    },
+    {
+      "company": "NTS Solutions (TUPE to Wavenet)",
+      "logo": "../img/nts.jpg",
+      "dates": "2017 – 2023",
+      "title": "Pre-Sales Engineer | Solutions Architect",
+      "text": [
+        "Acted as Product Owner and Scrum Lead for enterprise cloud and ICT solutions.",
+        "Led stakeholder workshops to uncover hidden requirements and co-created solutions.",
+        "Designed and delivered complex contact centre systems with a focus on reliability and security.",
+        "Applied Agile-inspired practices such as iterative planning and regular team check-ins.",
+        "Contributed to RFPs, technical proposals, and customer solution roadmaps."
+      ]
+    },
+    {
+      "company": "Incom Business Systems",
+      "logo": "../img/incom.webp",
+      "dates": "2015 – 2017",
+      "title": "Senior Technical Consultant",
+      "text": "Delivered pre-sales consultancy and technical designs for business-critical systems. Facilitated requirements gathering and post-implementation support."
+    },
+    {
+      "company": "Datasharp UK",
+      "logo": "../img/datasharp.jpg",
+      "dates": "2006 – 2015",
+      "title": "Senior Telecoms Engineer",
+      "text": "Led full lifecycle implementations and stakeholder training. Designed and supported enterprise ICT infrastructure."
+    },
+    {
+      "company": "Panasonic Communications",
+      "logo": "../imgpanasonic.webp",
+      "dates": "2003–2006",
+      "title": "Electronic Design Engineer",
+      "text": "TBC"
+    },
+     {
+      "company": "Evolution Training and Development",
+      "logo": "../img/datasharp.jpg",
+      "dates": "2002–2003",
+      "title": "Senior Quality Manager",
+      "text": "TBC"
+    },
+     {
+      "company": "Vision Training and Recruitment Lt",
+      "logo": "../img/datasharp.jpg",
+      "dates": "2001–2002",
+      "title": "Trainer/Assessor and Internal Verifier",
+      "text": "TBC"
+    },
+     {
+      "company": "Nortel Networks",
+      "logo": "../img/nortel.png",
+      "dates": "1999–2001",
+      "title": "Electronic Diagnostic Engineer",
+      "text": "TBC"
+    },
+     {
+      "company": "British Army (REME)",
+      "logo": "../img/army.png",
+      "dates": "1997–1999",
+      "title": "Craftsman",
+      "text": "TBC"
+    },
+    
+      "company": "Nuclear Electric",
+      "logo": "../img/army.png",
+      "dates": "1991–1997",
+      "title": "C&I Technician/Apprentice",
+      "text": "TBC"
+    }
+  ]
+}
