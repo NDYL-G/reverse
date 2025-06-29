@@ -1,21 +1,22 @@
-// js/reverseGame.js
-
 let mediaRecorder;
 let recordedChunks = [];
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+let selectedSpeed = 1.0;
 
 async function playPhrase(src) {
   const response = await fetch(src);
   const arrayBuffer = await response.arrayBuffer();
   const buffer = await audioContext.decodeAudioData(arrayBuffer);
 
-  // Reverse the buffer channels
+  // Reverse buffer
   for (let i = 0; i < buffer.numberOfChannels; i++) {
     buffer.getChannelData(i).reverse();
   }
 
   const source = audioContext.createBufferSource();
   source.buffer = buffer;
+  source.playbackRate.value = selectedSpeed;
   source.connect(audioContext.destination);
   source.start(0);
 }
@@ -61,4 +62,11 @@ window.addEventListener('DOMContentLoaded', () => {
   });
   document.getElementById('start-record').addEventListener('click', startRecording);
   document.getElementById('stop-record').addEventListener('click', stopRecording);
+
+  // Set selected speed from radio buttons
+  document.querySelectorAll('input[name=\"speed\"]').forEach(radio => {
+    radio.addEventListener('change', (e) => {
+      selectedSpeed = parseFloat(e.target.value);
+    });
+  });
 });
