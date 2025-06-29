@@ -57,7 +57,7 @@ function handleRecording() {
 // UI Hookup
 window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('play-phrase').addEventListener('click', () => {
-    playPhrase('snd/phrase1.mp3');
+    playPhrase('snd/HappyBirthday_Amy.mp3');
   });
   document.getElementById('start-record').addEventListener('click', startRecording);
   document.getElementById('stop-record').addEventListener('click', stopRecording);
