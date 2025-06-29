@@ -19,14 +19,29 @@
     <section id="reverse-game" class="section">
       <h2>Backwards Phrase Challenge</h2>
       <p>Listen to the reversed phrase, repeat it, and hear your voice reversed!</p>
-
+    
       <div class="game-controls">
         <button id="play-phrase">▶ Play Reversed Phrase</button>
         <button id="start-record">🎤 Start Recording</button>
         <button id="stop-record">⏹ Stop & Play Reversed</button>
       </div>
-
-      <p class="note">Ensure your mic is enabled when prompted. The phrase file should be named <code>HappyBirthday_Amy.mp3</code> in the <code>snd/</code> folder.</p>
+    
+      <div class="playback-speed">
+        <p><strong>Playback speed:</strong></p>
+        <label><input type="radio" name="speed" value="0.5"> 0.5×</label>
+        <label><input type="radio" name="speed" value="0.75" checked> 0.75×</label>
+        <label><input type="radio" name="speed" value="1.0"> 1× (normal)</label>
+      </div>
+    
+      <div class="phonetic">
+        <p><strong>Reversed (phonetic):</strong></p>
+        <p><em>ee-may ay-th-dirb ee-pah</em></p> <!-- Replace with your own transcription -->
+      </div>
+    
+      <p class="note">
+        Ensure your mic is enabled when prompted. The phrase file should be named
+        <code>HappyBirthday_Amy.mp3</code> in the <code>snd/</code> folder.
+      </p>
     </section>
   </main>
 
