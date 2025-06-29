@@ -10,7 +10,7 @@
 </head>
 <body>
 
-  <!-- Include Header -->
+  <!-- Header Include -->
   <div id="header">
     <!--#include file="html/header.html" -->
   </div>
@@ -18,34 +18,44 @@
   <main>
     <section id="reverse-game" class="section">
       <h2>Backwards Phrase Challenge</h2>
-      <p>Listen to the reversed phrase, repeat it, and hear your voice reversed!</p>
-    
+      <p>Choose a phrase, listen to it backwards, then try to copy it!</p>
+
+      <label for="phrase-select"><strong>Choose a phrase:</strong></label>
+      <select id="phrase-select">
+        <option value="HappyBirthday_Amy.mp3">Happy Birthday (Amy)</option>
+        <option value="HappyNewYear_Amy.mp3">Happy New Year (Amy)</option>
+        <option value="JollyGood_Amy.mp3">Jolly Good (Amy)</option>
+        <option value="KeepCalm_Amy.mp3">Keep Calm (Amy)</option>
+        <option value="MerryChristmas_Amy.mp3">Merry Christmas (Amy)</option>
+      </select>
+
       <div class="game-controls">
         <button id="play-phrase">▶ Play Reversed Phrase</button>
         <button id="start-record">🎤 Start Recording</button>
         <button id="stop-record">⏹ Stop & Play Reversed</button>
       </div>
-    
+
       <div class="playback-speed">
         <p><strong>Playback speed:</strong></p>
         <label><input type="radio" name="speed" value="0.5"> 0.5×</label>
         <label><input type="radio" name="speed" value="0.75" checked> 0.75×</label>
         <label><input type="radio" name="speed" value="1.0"> 1× (normal)</label>
       </div>
-    
+
+      <canvas id="waveform" width="600" height="100"></canvas>
+
       <div class="phonetic">
         <p><strong>Reversed (phonetic):</strong></p>
-        <p><em>ee-may ay-th-dirb ee-pah</em></p> <!-- Replace with your own transcription -->
+        <p><em>ee-may ay-th-dirb ee-pah</em></p> <!-- Update manually per phrase -->
       </div>
-    
+
       <p class="note">
-        Ensure your mic is enabled when prompted. The phrase file should be named
-        <code>HappyBirthday_Amy.mp3</code> in the <code>snd/</code> folder.
+        Make sure your mic is enabled when prompted. Your selected phrase must exist in the <code>snd/</code> folder.
       </p>
     </section>
   </main>
 
-  <!-- Include Footer -->
+  <!-- Footer Include -->
   <div id="footer">
     <!--#include file="html/footer.html" -->
   </div>
