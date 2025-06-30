@@ -1,5 +1,4 @@
 // js/include-loader.js
-
 async function loadInclude(id, file) {
   const el = document.getElementById(id);
   if (!el) return;
@@ -11,7 +10,6 @@ async function loadInclude(id, file) {
     el.innerHTML = `<p style="color: red;">Failed to load ${file}</p>`;
   }
 }
-
 document.addEventListener('DOMContentLoaded', () => {
   const prefix = window.location.pathname.includes('/html/') ? '' : 'html/';
   loadInclude('header', `${prefix}header.html`);
