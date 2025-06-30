@@ -1,4 +1,3 @@
-// js/reverseGame.js
 
 let mediaRecorder;
 let recordedChunks = [];
@@ -114,6 +113,11 @@ function checkAnswer(userAnswer, correctAnswer, resultElement) {
   }
 }
 
+function getQueryParam(name) {
+  const params = new URLSearchParams(window.location.search);
+  return params.get(name);
+}
+
 window.addEventListener('DOMContentLoaded', async () => {
   const canvas = document.getElementById('waveform');
   const select = document.getElementById('phrase-select');
@@ -125,9 +129,13 @@ window.addEventListener('DOMContentLoaded', async () => {
   const imageOut = document.getElementById('hint-image');
   const inputBox = document.getElementById('user-answer');
   const resultMsg = document.getElementById('result-msg');
+  const sectionTitle = document.getElementById('section-title');
 
-  const response = await fetch('data/phrases.json');
+  const category = getQueryParam('category') || 'celebrations';
+  const response = await fetch(`../data/${category}.json`);
   const phrases = await response.json();
+
+  sectionTitle.textContent += `: ${category[0].toUpperCase() + category.slice(1)}`;
 
   phrases.forEach((item, index) => {
     const option = document.createElement('option');
@@ -150,12 +158,11 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   playBtn.addEventListener('click', () => {
     if (currentPhrase.file) {
-      playPhrase(`snd/${currentPhrase.file}`, canvas);
+      playPhrase(`../snd/${currentPhrase.file}`, canvas);
     }
   });
 
   recordBtn.addEventListener('click', () => toggleRecording(canvas, recordBtn));
-
   answerBtn.addEventListener('click', () => {
     checkAnswer(inputBox.value, currentPhrase.answer, resultMsg);
   });
