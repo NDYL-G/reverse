@@ -120,4 +120,49 @@ window.addEventListener('DOMContentLoaded', async () => {
   const playBtn = document.getElementById('play-phrase');
   const recordBtn = document.getElementById('record-button');
   const answerBtn = document.getElementById('check-answer');
-  const phoneticOut = document.getElement
+  const phoneticOut = document.getElementById('phonetic');
+  const tipOut = document.getElementById('tip');
+  const imageOut = document.getElementById('hint-image');
+  const inputBox = document.getElementById('user-answer');
+  const resultMsg = document.getElementById('result-msg');
+
+  const response = await fetch('data/phrases.json');
+  const phrases = await response.json();
+
+  phrases.forEach((item, index) => {
+    const option = document.createElement('option');
+    option.value = index;
+    option.textContent = item.title;
+    select.appendChild(option);
+  });
+
+  select.addEventListener('change', () => {
+    currentPhrase = phrases[select.value];
+    phoneticOut.textContent = currentPhrase.phonetic;
+    tipOut.textContent = currentPhrase.tip;
+    imageOut.src = currentPhrase.image;
+    inputBox.value = '';
+    resultMsg.textContent = '';
+  });
+
+  select.value = 0;
+  select.dispatchEvent(new Event('change'));
+
+  playBtn.addEventListener('click', () => {
+    if (currentPhrase.file) {
+      playPhrase(`snd/${currentPhrase.file}`, canvas);
+    }
+  });
+
+  recordBtn.addEventListener('click', () => toggleRecording(canvas, recordBtn));
+
+  answerBtn.addEventListener('click', () => {
+    checkAnswer(inputBox.value, currentPhrase.answer, resultMsg);
+  });
+
+  document.querySelectorAll('input[name="speed"]').forEach(radio => {
+    radio.addEventListener('change', (e) => {
+      selectedSpeed = parseFloat(e.target.value);
+    });
+  });
+});
