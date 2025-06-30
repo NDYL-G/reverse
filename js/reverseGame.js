@@ -1,16 +1,10 @@
+// js/reverseGame.js
+
 let mediaRecorder;
 let recordedChunks = [];
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 let selectedSpeed = 0.75;
-
-// Optional phonetic mappings
-const phonetics = {
-  "HappyBirthday_Amy.mp3": "ee-may ay-th-dirb ee-pah",
-  "HappyNewYear_Amy.mp3": "ee-ray wen ee-pee ah",
-  "JollyGood_Amy.mp3": "ee-may doo-g ee-laj",
-  "KeepCalm_Amy.mp3": "ee-may mlak peek",
-  "MerryChristmas_Amy.mp3": "ee-may smats-tsirhc yrr-ehm"
-};
+let currentPhrase = {};
 
 let analyser, dataArray, ctx;
 
@@ -61,26 +55,27 @@ async function playPhrase(src, canvas) {
   drawWaveform(canvas);
 }
 
-function startRecording(canvas) {
-  navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
-    recordedChunks = [];
-    mediaRecorder = new MediaRecorder(stream);
-    mediaRecorder.ondataavailable = e => recordedChunks.push(e.data);
-    mediaRecorder.onstop = () => handleRecording(canvas);
-    mediaRecorder.start();
-
-    const micSource = audioContext.createMediaStreamSource(stream);
-    analyser = audioContext.createAnalyser();
-    analyser.fftSize = 2048;
-    dataArray = new Uint8Array(analyser.frequencyBinCount);
-    micSource.connect(analyser);
-    drawWaveform(canvas);
-  });
-}
-
-function stopRecording() {
-  if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+function toggleRecording(canvas, button) {
+  if (mediaRecorder && mediaRecorder.state === 'recording') {
     mediaRecorder.stop();
+    button.textContent = '🎤 Start Recording';
+  } else {
+    navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+      recordedChunks = [];
+      mediaRecorder = new MediaRecorder(stream);
+      mediaRecorder.ondataavailable = e => recordedChunks.push(e.data);
+      mediaRecorder.onstop = () => handleRecording(canvas);
+      mediaRecorder.start();
+
+      const micSource = audioContext.createMediaStreamSource(stream);
+      analyser = audioContext.createAnalyser();
+      analyser.fftSize = 2048;
+      dataArray = new Uint8Array(analyser.frequencyBinCount);
+      micSource.connect(analyser);
+      drawWaveform(canvas);
+
+      button.textContent = '⏹ Stop Recording';
+    });
   }
 }
 
@@ -109,32 +104,20 @@ function handleRecording(canvas) {
   reader.readAsArrayBuffer(blob);
 }
 
-// Safe DOM handling
-window.addEventListener('DOMContentLoaded', () => {
-  const phraseSelect = document.getElementById('phrase-select');
-  const playBtn = document.getElementById('play-phrase');
-  const startBtn = document.getElementById('start-record');
-  const stopBtn = document.getElementById('stop-record');
+function checkAnswer(userAnswer, correctAnswer, resultElement) {
+  if (userAnswer.trim().toLowerCase() === correctAnswer.trim().toLowerCase()) {
+    resultElement.textContent = '✅ Correct!';
+    resultElement.style.color = 'green';
+  } else {
+    resultElement.textContent = '❌ Try again!';
+    resultElement.style.color = 'red';
+  }
+}
+
+window.addEventListener('DOMContentLoaded', async () => {
   const canvas = document.getElementById('waveform');
-  const phoneticOutput = document.querySelector('.phonetic em');
-
-  playBtn.addEventListener('click', () => {
-    const filename = phraseSelect.value;
-    playPhrase(`snd/${filename}`, canvas);
-
-    if (phonetics[filename]) {
-      phoneticOutput.textContent = phonetics[filename];
-    } else {
-      phoneticOutput.textContent = "(phonetic not available)";
-    }
-  });
-
-  startBtn.addEventListener('click', () => startRecording(canvas));
-  stopBtn.addEventListener('click', stopRecording);
-
-  document.querySelectorAll('input[name="speed"]').forEach(radio => {
-    radio.addEventListener('change', (e) => {
-      selectedSpeed = parseFloat(e.target.value);
-    });
-  });
-});
+  const select = document.getElementById('phrase-select');
+  const playBtn = document.getElementById('play-phrase');
+  const recordBtn = document.getElementById('record-button');
+  const answerBtn = document.getElementById('check-answer');
+  const phoneticOut = document.getElement
