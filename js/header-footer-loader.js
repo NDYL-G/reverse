@@ -26,9 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Load footer and inject current year
   loadInclude('footer', `${prefix}footer.html`, () => {
-    const yearSpan = document.getElementById('year');
-    if (yearSpan) {
-      yearSpan.textContent = new Date().getFullYear();
-    }
-  });
+  const yearSpan = document.getElementById('year');
+  if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear();
+    console.log("✅ Year inserted into footer.");
+  } else {
+    console.warn("⚠️ Year span not found.");
+  }
 });
