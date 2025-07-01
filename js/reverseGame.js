@@ -114,6 +114,7 @@ function playUserRecording(canvas) {
 
   const src = audioContext.createBufferSource();
   src.buffer = recordedBuffer;
+  src.playbackRate.value = selectedSpeed;
   src.connect(audioContext.destination);
   src.start();
 
@@ -152,6 +153,8 @@ window.addEventListener('DOMContentLoaded', async () => {
   const inputBox = document.getElementById('user-answer');
   const resultMsg = document.getElementById('result-msg');
   const sectionTitle = document.getElementById('section-title');
+  const speedSlider = document.getElementById('speed-slider');
+  const speedDisplay = document.getElementById('speed-value');
 
   const category = getQueryParam('category') || 'celebrations';
   const response = await fetch(`../data/${category}.json`);
@@ -190,9 +193,11 @@ window.addEventListener('DOMContentLoaded', async () => {
     checkAnswer(inputBox.value, currentPhrase.answer, resultMsg);
   });
 
-  document.querySelectorAll('input[name="speed"]').forEach(radio => {
-    radio.addEventListener('change', (e) => {
-      selectedSpeed = parseFloat(e.target.value);
+  if (speedSlider && speedDisplay) {
+    speedSlider.addEventListener('input', () => {
+      selectedSpeed = parseFloat(speedSlider.value);
+      speedDisplay.textContent = `${selectedSpeed.toFixed(2)}×`;
     });
-  });
+    speedDisplay.textContent = `${selectedSpeed.toFixed(2)}×`;
+  }
 });
