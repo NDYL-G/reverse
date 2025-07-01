@@ -1,16 +1,17 @@
 // js/menu-loader.js
-// this script is called via header-footer-loader.js 
 
-window.addEventListener('DOMContentLoaded', () => {
+(function populateDropdown() {
   const dropdownContainer = document.querySelector('.nav-dropdown-content');
-  if (!dropdownContainer) return;
+  if (!dropdownContainer) {
+    console.warn("Dropdown container not found.");
+    return;
+  }
 
   const pages = [
     { title: '🎉 Celebrations', category: 'celebrations' },
     { title: '🎬 Movies', category: 'movies' },
     { title: '🧠 Brain Teasers', category: 'brain' },
     { title: '🐾 Animals', category: 'animals' }
-    // Add more categories here
   ];
 
   pages.forEach(page => {
@@ -19,4 +20,4 @@ window.addEventListener('DOMContentLoaded', () => {
     link.textContent = page.title;
     dropdownContainer.appendChild(link);
   });
-});
+})();
