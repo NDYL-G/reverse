@@ -1,9 +1,11 @@
+// js/reverseGame.js
 
 let mediaRecorder;
 let recordedChunks = [];
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 let selectedSpeed = 0.75;
 let currentPhrase = {};
+let recordedBuffer = null;
 
 let analyser, dataArray, ctx;
 
@@ -88,8 +90,10 @@ function handleRecording(canvas) {
         buffer.getChannelData(i).reverse();
       }
 
+      recordedBuffer = buffer;
+
       const src = audioContext.createBufferSource();
-      src.buffer = buffer;
+      src.buffer = recordedBuffer;
       src.connect(audioContext.destination);
       src.start();
 
@@ -98,9 +102,26 @@ function handleRecording(canvas) {
       dataArray = new Uint8Array(analyser.frequencyBinCount);
       src.connect(analyser);
       drawWaveform(canvas);
+
+      document.getElementById('play-recording').disabled = false;
     });
   };
   reader.readAsArrayBuffer(blob);
+}
+
+function playUserRecording(canvas) {
+  if (!recordedBuffer) return;
+
+  const src = audioContext.createBufferSource();
+  src.buffer = recordedBuffer;
+  src.connect(audioContext.destination);
+  src.start();
+
+  analyser = audioContext.createAnalyser();
+  analyser.fftSize = 2048;
+  dataArray = new Uint8Array(analyser.frequencyBinCount);
+  src.connect(analyser);
+  drawWaveform(canvas);
 }
 
 function checkAnswer(userAnswer, correctAnswer, resultElement) {
@@ -123,6 +144,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   const select = document.getElementById('phrase-select');
   const playBtn = document.getElementById('play-phrase');
   const recordBtn = document.getElementById('record-button');
+  const playbackBtn = document.getElementById('play-recording');
   const answerBtn = document.getElementById('check-answer');
   const phoneticOut = document.getElementById('phonetic');
   const tipOut = document.getElementById('tip');
@@ -163,6 +185,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   });
 
   recordBtn.addEventListener('click', () => toggleRecording(canvas, recordBtn));
+  playbackBtn.addEventListener('click', () => playUserRecording(canvas));
   answerBtn.addEventListener('click', () => {
     checkAnswer(inputBox.value, currentPhrase.answer, resultMsg);
   });
