@@ -33,9 +33,21 @@
       <canvas id="waveform" width="600" height="100"></canvas>
 
       <div class="hints">
-        <p><strong>Phonetic:</strong> <span id="phonetic"></span></p>
-        <p><strong>Tip:</strong> <span id="tip"></span></p>
-        <img id="hint-image" src="" alt="Hint Image" style="max-width: 300px;" />
+        <div>
+          <p><strong>Phonetic:</strong> <span id="phonetic"></span></p>
+          <button id="show-phonetic">Show Phonetic</button>
+        </div>
+      
+        <div>
+          <p><strong>Tip:</strong> <span id="tip"></span></p>
+          <button id="show-tip">Show Tip</button>
+        </div>
+      
+        <div>
+          <img id="hint-image" src="" alt="Hint Image" style="max-width: 300px; display: none;" />
+          <br />
+          <button id="show-image">Show Image</button>
+        </div>
       </div>
 
       <div class="answer-check">
