@@ -1,16 +1,16 @@
+// js/header-footer-loader.js
+
 async function loadInclude(id, file, callback) {
   const el = document.getElementById(id);
   if (!el) return;
-
   try {
     const res = await fetch(file);
-    if (!res.ok) throw new Error(`Failed to fetch ${file}: ${res.status}`);
     const html = await res.text();
     el.innerHTML = html;
-    if (callback) callback();
+    if (callback) callback(); // Run any follow-up logic
   } catch (err) {
-    el.innerHTML = `<p style="color:red;">Failed to load ${file}</p>`;
-    console.error(err);
+    el.innerHTML = `<p style="color: red;">Failed to load ${file}</p>`;
+    console.error(`Failed to load ${file}:`, err);
   }
 }
 
@@ -24,9 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(script);
   });
 
-  // Load footer and inject year
+  // Load footer and inject current year
   loadInclude('footer', `${prefix}footer.html`, () => {
-    const yearEl = document.getElementById('year');
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
+    const yearSpan = document.getElementById('year');
+    if (yearSpan) {
+      yearSpan.textContent = new Date().getFullYear();
+    }
   });
 });
