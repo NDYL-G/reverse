@@ -143,6 +143,9 @@ window.addEventListener('DOMContentLoaded', async () => {
   const sectionTitle = document.getElementById('section-title');
   const speedSlider = document.getElementById('speed-slider');
   const speedDisplay = document.getElementById('speed-value');
+  const showPhoneticBtn = document.getElementById('show-phonetic');
+  const showTipBtn = document.getElementById('show-tip');
+  const showImageBtn = document.getElementById('show-image');
 
   const category = getQueryParam('category') || 'celebrations';
   const response = await fetch(`../data/${category}.json`);
@@ -159,9 +162,10 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   select.addEventListener('change', () => {
     currentPhrase = phrases[select.value];
-    phoneticOut.textContent = currentPhrase.phonetic;
-    tipOut.textContent = currentPhrase.tip;
-    imageOut.src = currentPhrase.image;
+    phoneticOut.textContent = '';
+    tipOut.textContent = '';
+    imageOut.src = '';
+    imageOut.style.display = 'none';
     inputBox.value = '';
     resultMsg.textContent = '';
   });
@@ -187,5 +191,24 @@ window.addEventListener('DOMContentLoaded', async () => {
       speedDisplay.textContent = `${selectedSpeed.toFixed(2)}×`;
     });
     speedDisplay.textContent = `${selectedSpeed.toFixed(2)}×`;
+  }
+
+  if (showPhoneticBtn) {
+    showPhoneticBtn.addEventListener('click', () => {
+      phoneticOut.textContent = currentPhrase.phonetic;
+    });
+  }
+
+  if (showTipBtn) {
+    showTipBtn.addEventListener('click', () => {
+      tipOut.textContent = currentPhrase.tip;
+    });
+  }
+
+  if (showImageBtn) {
+    showImageBtn.addEventListener('click', () => {
+      imageOut.src = currentPhrase.image;
+      imageOut.style.display = 'block';
+    });
   }
 });
