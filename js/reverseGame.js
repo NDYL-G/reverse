@@ -65,7 +65,7 @@ function toggleRecording(canvas, button) {
       recordedChunks = [];
       mediaRecorder = new MediaRecorder(stream);
       mediaRecorder.ondataavailable = e => recordedChunks.push(e.data);
-      mediaRecorder.onstop = () => handleRecording(canvas);
+      mediaRecorder.onstop = () => processRecording();
       mediaRecorder.start();
 
       const micSource = audioContext.createMediaStreamSource(stream);
@@ -80,7 +80,7 @@ function toggleRecording(canvas, button) {
   }
 }
 
-function handleRecording(canvas) {
+function processRecording() {
   const blob = new Blob(recordedChunks, { type: 'audio/webm' });
   const reader = new FileReader();
 
@@ -91,18 +91,6 @@ function handleRecording(canvas) {
       }
 
       recordedBuffer = buffer;
-
-      const src = audioContext.createBufferSource();
-      src.buffer = recordedBuffer;
-      src.connect(audioContext.destination);
-      src.start();
-
-      analyser = audioContext.createAnalyser();
-      analyser.fftSize = 2048;
-      dataArray = new Uint8Array(analyser.frequencyBinCount);
-      src.connect(analyser);
-      drawWaveform(canvas);
-
       document.getElementById('play-recording').disabled = false;
     });
   };
