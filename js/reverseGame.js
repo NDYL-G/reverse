@@ -153,7 +153,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   phrases.forEach((item, index) => {
     const option = document.createElement('option');
     option.value = index;
-    option.textContent = item.title;
+    option.textContent = `${index + 1}`;
     select.appendChild(option);
   });
 
