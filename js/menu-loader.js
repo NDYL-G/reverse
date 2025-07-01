@@ -1,20 +1,20 @@
 // js/menu-loader.js
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', async () => {
   const dropdownContainer = document.querySelector('.nav-dropdown-content');
   if (!dropdownContainer) return;
 
   const pages = [
-    { title: '🎉 Celebrations', category: 'celebrations' },
-    { title: '🎬 Movies', category: 'movies' },
-    { title: '🧠 Brain Teasers', category: 'brain' },
-    { title: '🐾 Animals', category: 'animals' }
-    // Add more categories here
+    { title: '🎉 Celebrations', file: 'celebrations.html' },
+    { title: '🎬 Movies', file: 'movies.html' },
+    { title: '🐾 Animals', file: 'animals.html' },
+    { title: '🧠 Brain Teasers', file: 'brain.html' }
+    // Add more as needed
   ];
 
   pages.forEach(page => {
     const link = document.createElement('a');
-    link.href = `section.html?category=${page.category}`;
+    link.href = page.file;
     link.textContent = page.title;
     dropdownContainer.appendChild(link);
   });
