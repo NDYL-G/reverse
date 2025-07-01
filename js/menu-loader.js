@@ -9,12 +9,14 @@ window.addEventListener('DOMContentLoaded', () => {
     { title: '🎬 Movies', category: 'movies' },
     { title: '🧠 Brain Teasers', category: 'brain' },
     { title: '🐾 Animals', category: 'animals' }
-    // Add more categories here
   ];
+
+  // Determine relative path prefix
+  const prefix = window.location.pathname.includes('/html/') ? '' : 'html/';
 
   pages.forEach(page => {
     const link = document.createElement('a');
-    link.href = `section.html?category=${page.category}`;
+    link.href = `${prefix}section.html?category=${page.category}`;
     link.textContent = page.title;
     dropdownContainer.appendChild(link);
   });
