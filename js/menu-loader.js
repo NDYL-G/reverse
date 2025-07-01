@@ -7,6 +7,9 @@
     return;
   }
 
+  // Check if current page is in the root or in /html/
+  const prefix = window.location.pathname.includes('/html/') ? '' : 'html/';
+
   const pages = [
     { title: '🎉 Celebrations', category: 'celebrations' },
     { title: '🎬 Movies', category: 'movies' },
@@ -16,7 +19,7 @@
 
   pages.forEach(page => {
     const link = document.createElement('a');
-    link.href = `section.html?category=${page.category}`;
+    link.href = `${prefix}section.html?category=${page.category}`;
     link.textContent = page.title;
     dropdownContainer.appendChild(link);
   });
