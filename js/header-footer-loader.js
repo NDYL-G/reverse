@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Load header and then attach menu-loader.js
   loadInclude('header', `${prefix}header.html`, () => {
     const script = document.createElement('script');
-    script.src = `${prefix}../js/menu-loader.js`;
+    script.src = `/js/menu-loader.js`;
     document.body.appendChild(script);
   });
 
