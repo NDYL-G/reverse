@@ -5,7 +5,7 @@
     "category": "Celebrations",
     "phonetic": "here for repah",
     "tip": "It's something people sing once a year.",
-    "image": "img/happy_birthday.png",
+    "image": "../img/happy_birthday.png",
     "answer": "Happy Birthday"
   },
   {
@@ -14,7 +14,7 @@
     "category": "Celebrations",
     "phonetic": "herewe newpah",
     "tip": "A phrase shouted at midnight.",
-    "image": "img/happy_new_year.png",
+    "image": "../img/happy_new_year.png",
     "answer": "Happy New Year"
   },
   {
@@ -23,7 +23,7 @@
     "category": "Celebrations",
     "phonetic": "ee-may doo-g ee-laj",
     "tip": "Often said when raising a toast.",
-    "image": "img/jolly_good.png",
+    "image": "../img/jolly_good.png",
     "answer": "Jolly Good"
   },
   {
@@ -32,7 +32,7 @@
     "category": "Celebrations",
     "phonetic": "noi rekne mochne",
     "tip": "Classic British wartime poster.",
-    "image": "img/keep_calm.png",
+    "image": "../img/keep_calm.png",
     "answer": "Keep Calm"
   },
   {
@@ -41,7 +41,7 @@
     "category": "Celebrations",
     "phonetic": "sumsum secrium",
     "tip": "A holiday greeting in December.",
-    "image": "img/merry_christmas.png",
+    "image": "../img/merry_christmas.png",
     "answer": "Merry Christmas"
   }
 ]
