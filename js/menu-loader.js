@@ -1,5 +1,5 @@
 // js/menu-loader.js
-// this script is called in header-footer-loader.js 
+// this script is called via header-footer-loader.js 
 
 window.addEventListener('DOMContentLoaded', () => {
   const dropdownContainer = document.querySelector('.nav-dropdown-content');
