@@ -15,7 +15,7 @@
     { title: '🐾 Animals', category: 'animals' },
     { title: '🎬 Movies', category: 'movies' },
     { title: '🦸‍♂️ Superheroes', category: 'superheroes' },
-    { title: '🐾 Animations', category: 'animations' }/*,
+    { title: '🎞️ Animations', category: 'animations' }/*,
     { title: '🎵 Rock and Pop', category: 'rockandpop' }*/
   ];
 
