@@ -12,9 +12,11 @@
 
   const pages = [
     { title: '🎉 Celebrations', category: 'celebrations' },
-    { title: '🎬 Movies', category: 'movies' },
-    { title: '🧠 Brain Teasers', category: 'brain' },
     { title: '🐾 Animals', category: 'animals' }
+    { title: '🎬 Movies', category: 'movies' },
+    { title: '🧠 Superheroes', category: 'superheroes' },
+    { title: '🐾 Animations', category: 'animations' }
+    { title: '🐾 Rock and Pop', category: 'rockandpop' }
   ];
 
   pages.forEach(page => {
