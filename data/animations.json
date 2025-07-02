@@ -2,7 +2,7 @@
   {
     "title": "The Lion King",
     "file": "the_lion_king.mp3",
-    "phonetic": "thuh ly-un king",
+    "phonetic": "nik neila",
     "tip": "Animated film about a royal cub.",
     "image": "../img/the_lion_king.jpg",
     "answer": "The Lion King",
@@ -11,7 +11,7 @@
   {
     "title": "Finding Nemo",
     "file": "finding_nemo.mp3",
-    "phonetic": "fyn-ding nee-moh",
+    "phonetic": "arm neem is nuf",
     "tip": "A clownfish searches for his son.",
     "image": "../img/finding_nemo.jpg",
     "answer": "Finding Nemo",
@@ -20,7 +20,7 @@
   {
     "title": "Toy Story",
     "file": "toy_story.mp3",
-    "phonetic": "toy stor-ee",
+    "phonetic": "eerodgeeof",
     "tip": "Toys come to life when humans leave.",
     "image": "../img/toy_story.jpg",
     "answer": "Toy Story",
