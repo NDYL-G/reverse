@@ -2,7 +2,7 @@
   {
     "title": "Spider-Man",
     "file": "spider_man.mp3",
-    "phonetic": "spy-der man",
+    "phonetic": "now billyops",
     "tip": "Shoots webs and swings through cities.",
     "image": "../img/spider_man.jpg",
     "answer": "Spider-Man",
@@ -11,7 +11,7 @@
   {
     "title": "Iron Man",
     "file": "iron_man.mp3",
-    "phonetic": "eye-urn man",
+    "phonetic": "nam now",
     "tip": "Genius billionaire in a flying suit.",
     "image": "../img/iron_man.jpg",
     "answer": "Iron Man",
@@ -20,7 +20,7 @@
   {
     "title": "Captain Marvel",
     "file": "captain_marvel.mp3",
-    "phonetic": "kap-tin mar-vuhl",
+    "phonetic": "oovan misbec",
     "tip": "Powerful space-faring Avenger.",
     "image": "../img/captain_marvel.jpg",
     "answer": "Captain Marvel",
@@ -29,7 +29,7 @@
   {
     "title": "Doctor Strange",
     "file": "doctor_strange.mp3",
-    "phonetic": "dok-ter straynj",
+    "phonetic": "snyer susbt",
     "tip": "Master of the mystic arts.",
     "image": "../img/doctor_strange.jpg",
     "answer": "Doctor Strange",
@@ -38,7 +38,7 @@
   {
     "title": "Wonder Woman",
     "file": "wonder_woman.mp3",
-    "phonetic": "wun-der wuh-muhn",
+    "phonetic": "noa wos no",
     "tip": "Amazon warrior with a lasso.",
     "image": "../img/wonder_woman.jpg",
     "answer": "Wonder Woman",
@@ -47,7 +47,7 @@
   {
     "title": "The Flash",
     "file": "the_flash.mp3",
-    "phonetic": "thuh flash",
+    "phonetic": "shlan ft",
     "tip": "Fastest man alive.",
     "image": "../img/the_flash.jpg",
     "answer": "The Flash",
@@ -56,7 +56,7 @@
   {
     "title": "Green Lantern",
     "file": "green_lantern.mp3",
-    "phonetic": "green lan-turn",
+    "phonetic": "nst lan nero",
     "tip": "Wields a ring powered by will.",
     "image": "../img/green_lantern.jpg",
     "answer": "Green Lantern",
@@ -65,7 +65,7 @@
   {
     "title": "Black Panther",
     "file": "black_panther.mp3",
-    "phonetic": "blak pan-thur",
+    "phonetic": "erf naf gan",
     "tip": "Wakandan king with super senses.",
     "image": "../img/black_panther.jpg",
     "answer": "Black Panther",
@@ -74,7 +74,7 @@
   {
     "title": "Silver Surfer",
     "file": "silver_surfer.mp3",
-    "phonetic": "sil-vur sur-fur",
+    "phonetic": "her fur savus",
     "tip": "Cosmic hero with a shiny board.",
     "image": "../img/silver_surfer.jpg",
     "answer": "Silver Surfer",
@@ -83,7 +83,7 @@
   {
     "title": "Superman",
     "file": "superman.mp3",
-    "phonetic": "soo-per-man",
+    "phonetic": "namafus",
     "tip": "Flies, lifts cars, and shoots lasers from his eyes.",
     "image": "../img/superman.jpg",
     "answer": "Superman",
