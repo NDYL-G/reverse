@@ -11,12 +11,12 @@
   const prefix = window.location.pathname.includes('/html/') ? '' : 'html/';
 
   const pages = [
-    { title: '🎉 Celebrations', category: 'celebrations' },
+    { title: '🎉 Celebrations', category: 'celebrations' }/*,
     { title: '🐾 Animals', category: 'animals' },
     { title: '🎬 Movies', category: 'movies' },
     { title: '🧠 Superheroes', category: 'superheroes' },
     { title: '🐾 Animations', category: 'animations' },
-    { title: '🐾 Rock and Pop', category: 'rockandpop' }
+    { title: '🐾 Rock and Pop', category: 'rockandpop' }*/
   ];
 
   pages.forEach(page => {
