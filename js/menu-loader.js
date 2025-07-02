@@ -14,9 +14,9 @@
     { title: '🎉 Celebrations', category: 'celebrations' },
     { title: '🐾 Animals', category: 'animals' },
     { title: '🎬 Movies', category: 'movies' },
-    { title: '🧠 Superheroes', category: 'superheroes' }/*,
-    { title: '🐾 Animations', category: 'animations' },
-    { title: '🐾 Rock and Pop', category: 'rockandpop' }*/
+    { title: '🦸‍♂️ Superheroes', category: 'superheroes' },
+    { title: '🐾 Animations', category: 'animations' }/*,
+    { title: '🎵 Rock and Pop', category: 'rockandpop' }*/
   ];
 
   pages.forEach(page => {
